@@ -22,5 +22,5 @@ public interface ShiroOperations extends Feature  {
     /**
      * Setup all add-on artifacts (dependencies in this case)
      */
-    void setup(Pom module);
+    void setup();
 }
