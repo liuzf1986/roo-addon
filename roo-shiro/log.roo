@@ -1,2 +1,5 @@
 // Spring Roo 2.0.0.M1 [rev 33e5d76] log opened at 2016-04-21 23:41:30
 addon create advanced --topLevelPackage com.yaago.roo.addon.shiro --projectName yaago-shiro
+// Spring Roo 2.0.0.M1 [rev 33e5d76] log opened at 2016-04-22 23:21:46
+quit
+// Spring Roo 2.0.0.M1 [rev 33e5d76] log closed at 2016-04-22 23:25:27

@@ -12,6 +12,8 @@ import org.springframework.roo.project.maven.Pom;
 public interface ShiroOperations extends Feature  {
 
     String FEATURE_NAME_YAGGO_SHIRO = "yaago-shiro";
+    String FILTER_NAME_YAAGO_SHIRO = "shiroFilter";
+    String FILTER_CLASS_YAAGO_SHIRO = "org.springframework.web.filter.DelegatingFilterProxy";
     /**
      * Indicate setup should be available
      *

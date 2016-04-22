@@ -26,41 +26,7 @@ public class ShiroCommands implements CommandMarker { // All command types must 
      * Get a reference to the ShiroOperations from the underlying OSGi container
      */
     @Reference private ShiroOperations operations;
-    
-    /**
-     * This method is optional. It allows automatic command hiding in situations when the command should not be visible.
-     * For example the 'entity' command will not be made available before the user has defined his persistence settings 
-     * in the Roo shell or directly in the project.
-     * 
-     * You can define multiple methods annotated with {@link CliAvailabilityIndicator} if your commands have differing
-     * visibility requirements.
-     * 
-     * @return true (default) if the command should be visible at this stage, false otherwise
-     */
-    @CliAvailabilityIndicator({ "shiro setup", "shiro add", "shiro all" })
-    public boolean isCommandAvailable() {
-        return operations.isCommandAvailable();
-    }
-    
-    /**
-     * This method registers a command with the Roo shell. It also offers a mandatory command attribute.
-     * 
-     * @param type 
-     */
-    @CliCommand(value = "shiro add", help = "Some helpful description")
-    public void add(@CliOption(key = "type", mandatory = true, help = "The java type to apply this annotation to") JavaType target) {
-        operations.annotateType(target);
-    }
-    
-    /**
-     * This method registers a command with the Roo shell. It has no command attribute.
-     * 
-     */
-    @CliCommand(value = "shiro all", help = "Some helpful description")
-    public void all() {
-        operations.annotateAll();
-    }
-    
+
     /**
      * This method registers a command with the Roo shell. It has no command attribute.
      * 

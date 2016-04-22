@@ -24,6 +24,7 @@ import org.springframework.roo.process.manager.FileManager;
 import org.springframework.roo.project.*;
 import org.springframework.roo.project.maven.Pom;
 import org.springframework.roo.support.logging.HandlerUtils;
+import org.springframework.roo.support.util.WebXmlUtils;
 import org.springframework.roo.support.util.XmlUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -38,7 +39,7 @@ import javax.annotation.*;
 @Component // Use these Apache Felix annotations to register your commands class in the Roo container
 @Service
 public class ShiroOperationsImpl implements ShiroOperations {
-
+    private static final String WEB_XML = "WEB-INF/web.xml";
     protected final static Logger LOGGER = HandlerUtils.getLogger(ShiroOperationsImpl.class);
 
     // ------------ ROO platform support ----------------
@@ -56,7 +57,6 @@ public class ShiroOperationsImpl implements ShiroOperations {
     @Reference
     TilesOperations tilesOperations;
     // ------------ ROO platform support ----------------
-
 
     protected void activate(final ComponentContext context) {
         this.context = context.getBundleContext();
@@ -84,6 +84,12 @@ public class ShiroOperationsImpl implements ShiroOperations {
         }
     }
 
+    private void updateWebXml(String moduleName) {
+        String webXmlPath = pathResolver.getFocusedIdentifier(Path.SRC_MAIN_WEBAPP, WEB_XML);
+        Document document = XmlUtils.readXml(fileManager.getInputStream(webXmlPath));
+        WebXmlUtils.addFilter(FILTER_NAME_YAAGO_SHIRO, FILTER_CLASS_YAAGO_SHIRO, "/*", document, null);
+    }
+
 
     @Override
     public boolean isSetupAvailable() {
@@ -96,6 +102,7 @@ public class ShiroOperationsImpl implements ShiroOperations {
     public void setup() {
         String moduleName = projectOperations.getFocusedModuleName();
         updatePom(moduleName);
+        updateWebXml(moduleName);
     }
 
     @Override

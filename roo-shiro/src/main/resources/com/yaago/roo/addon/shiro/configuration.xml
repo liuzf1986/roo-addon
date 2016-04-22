@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <configuration>
-	<batch>
+	<spring-shiro>
+
+		<properties>
+			<shiro.version>1.2.4</shiro.version>
+		</properties>
+
 		<dependencies>
-			<!-- Ivy-style dependency definition -->
-			<dependency org="org.springframework.batch" name="spring-batch-core" rev="2.1.1.RELEASE" />
-			
-			<!-- Maven-style dependency definition (should be used if exclusions need to be defined) -->
 			<dependency>
-				<groupId>org.springframework.batch</groupId>
-				<artifactId>spring-batch-admin-manager</artifactId>
-				 <version>1.0.0.RELEASE</version>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-core</artifactId>
+				<shiro.version>${shiro.version}</shiro.version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-web</artifactId>
+				<shiro.version>${shiro.version}</shiro.version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-spring</artifactId>
+				<shiro.version>${shiro.version}</shiro.version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-ehcache</artifactId>
+				<shiro.version>${shiro.version}</shiro.version>
 			</dependency>
 		</dependencies>
-	</batch>
+	</spring-shiro>
 </configuration>
